@@ -1,3 +1,7 @@
+.img {
+  width: 20vh;
+  height: auto;
+}
 .App {
   text-align: left;
 }
@@ -9,13 +13,16 @@
 
 .App-header {
   background-color: #222;
-  height: 50px;
   padding: 20px;
   color: white;
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1em;
+  font-size: 2em;
   font-weight: bold;
+}
+.Logo-image {
+  height: 40px;
+  width: 40px;
 }
 
 .App-title {
@@ -53,5 +60,23 @@ tr {
 }
 
 .card {
-  width: 18rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card-group {
+  margin: 1rem;
+  flex-basis: 20%;
+  background-clip: border-box;
+  border: 2px solid rgba(10, 21, 145, 0.4);
+  border-radius: 0.25rem;
+}
+
+img.card-img-top {
+  width: 100%;
+}
+@media screen and (max-width: 700px) {
+  .card-group {
+    flex-grow: 1;
+  }
 }
