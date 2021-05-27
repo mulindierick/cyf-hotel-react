@@ -1,5 +1,5 @@
-import moment from "moment";
 import React from "react";
+import TableRow from "./TableRow";
 const SearchResults = props => {
   return (
     <div className="table-responsive">
@@ -36,31 +36,11 @@ const SearchResults = props => {
           </tr>
         </thead>
         <tbody>
-          {props.customerData.map((item, index) => {
-            let dateOut = item.checkOutDate;
-            let dateIn = item.checkInDate;
-            let nights = moment
-              .utc(
-                moment(dateOut, "YYYY-MM-DD").diff(moment(dateIn, "YYYY-MM-DD"))
-              )
-              .format("D");
-
-            return (
-              <tr key={index + 1}>
-                <th key={index + 2} scope="row">
-                  {item.id}
-                </th>
-                <td key={index + 3}>{item.title}</td>
-                <td key={index + 4}>{item.firstName}</td>
-                <td key={index + 5}>{item.surname}</td>
-                <td key={index + 6}>{item.email}</td>
-                <td key={index + 7}>{item.roomId}</td>
-                <td key={index + 8}>{item.checkInDate}</td>
-                <td key={index + 9}>{item.checkOutDate}</td>
-                <td key={index + 10}>{nights - 1}</td>
-              </tr>
-            );
-          })}
+          <React.Fragment>
+            {props.customerData.map((item, index) => {
+              return <TableRow key={index} data={item} />;
+            })}
+          </React.Fragment>
         </tbody>
       </table>
     </div>
