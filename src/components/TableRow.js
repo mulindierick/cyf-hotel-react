@@ -4,10 +4,13 @@ import React, { useState } from "react";
 const TableRow = props => {
   let index = 0;
   let dateOut = props.data.checkOutDate;
+
   let dateIn = props.data.checkInDate;
-  let nights = moment
-    .utc(moment(dateOut, "YYYY-MM-DD").diff(moment(dateIn, "YYYY-MM-DD")))
-    .format("D");
+  console.log(dateIn, dateOut);
+  let nights = moment(dateOut, "YYYY-MM-DD").diff(
+    moment(dateIn, "YYYY-MM-DD"),
+    "days"
+  );
 
   let [selected, setSelected] = useState(false);
   let [className, setClassName] = useState("green");
@@ -27,7 +30,7 @@ const TableRow = props => {
       <td key={index + 7}>{props.data.roomId}</td>
       <td key={index + 8}>{props.data.checkInDate}</td>
       <td key={index + 9}>{props.data.checkOutDate}</td>
-      <td key={index + 10}>{nights - 1}</td>
+      <td key={index + 10}>{nights}</td>
     </tr>
   );
 };
